@@ -1,0 +1,8 @@
+0.06
+perl(Cairo)
+perl(Cairo::GObject)
+perl(Glib)
+perl(Glib::Object::Introspection)
+perl(Gtk3)
+perl(Test::NeedsDisplay)
+util-linux
