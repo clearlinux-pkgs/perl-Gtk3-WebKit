@@ -4,13 +4,14 @@
 #
 Name     : perl-Gtk3-WebKit
 Version  : 0.06
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk3-WebKit-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk3-WebKit-0.06.tar.gz
 Summary  : 'WebKit bindings for Perl'
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: perl-Gtk3-WebKit-license = %{version}-%{release}
+Requires: perl-Gtk3-WebKit-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Cairo)
 BuildRequires : perl(Cairo::GObject)
@@ -45,15 +46,25 @@ Group: Default
 license components for the perl-Gtk3-WebKit package.
 
 
+%package perl
+Summary: perl components for the perl-Gtk3-WebKit package.
+Group: Default
+Requires: perl-Gtk3-WebKit = %{version}-%{release}
+
+%description perl
+perl components for the perl-Gtk3-WebKit package.
+
+
 %prep
 %setup -q -n Gtk3-WebKit-0.06
+cd %{_builddir}/Gtk3-WebKit-0.06
 %patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -63,7 +74,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -72,8 +83,8 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Gtk3-WebKit
-cp COPYING %{buildroot}/usr/share/package-licenses/perl-Gtk3-WebKit/COPYING
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Gtk3-WebKit/LICENSE
+cp %{_builddir}/Gtk3-WebKit-0.06/COPYING %{buildroot}/usr/share/package-licenses/perl-Gtk3-WebKit/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/Gtk3-WebKit-0.06/LICENSE %{buildroot}/usr/share/package-licenses/perl-Gtk3-WebKit/e31ca32ae3719c91db4befb50294a04ca9c46f0a
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -86,7 +97,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Gtk3/WebKit.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -94,5 +104,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Gtk3-WebKit/COPYING
-/usr/share/package-licenses/perl-Gtk3-WebKit/LICENSE
+/usr/share/package-licenses/perl-Gtk3-WebKit/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+/usr/share/package-licenses/perl-Gtk3-WebKit/e31ca32ae3719c91db4befb50294a04ca9c46f0a
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Gtk3/WebKit.pm
