@@ -4,7 +4,7 @@
 #
 Name     : perl-Gtk3-WebKit
 Version  : 0.06
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk3-WebKit-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk3-WebKit-0.06.tar.gz
 Summary  : 'WebKit bindings for Perl'
