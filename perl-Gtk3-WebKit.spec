@@ -4,7 +4,7 @@
 #
 Name     : perl-Gtk3-WebKit
 Version  : 0.06
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk3-WebKit-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk3-WebKit-0.06.tar.gz
 Summary  : 'WebKit bindings for Perl'
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : LGPL-2.1
 Requires: perl-Gtk3-WebKit-license = %{version}-%{release}
 Requires: perl-Gtk3-WebKit-perl = %{version}-%{release}
+Requires: webkitgtk
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Cairo)
 BuildRequires : perl(Cairo::GObject)
@@ -19,7 +20,7 @@ BuildRequires : perl(Glib)
 BuildRequires : perl(Glib::Object::Introspection)
 BuildRequires : perl(Gtk3)
 BuildRequires : perl(Test::NeedsDisplay)
-BuildRequires : pkgconfig(webkit2gtk-4.0)
+BuildRequires : pkgconfig(webkit2gtk-4.1)
 BuildRequires : util-linux
 BuildRequires : webkitgtk
 Patch1: Gtk3-WebKit-0.06-Port-to-webkitgtk4.patch
