@@ -4,7 +4,7 @@
 #
 Name     : perl-Gtk3-WebKit
 Version  : 0.06
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk3-WebKit-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PO/POTYL/Gtk3-WebKit-0.06.tar.gz
 Summary  : 'WebKit bindings for Perl'
@@ -22,7 +22,6 @@ BuildRequires : perl(Gtk3)
 BuildRequires : perl(Test::NeedsDisplay)
 BuildRequires : pkgconfig(webkit2gtk-4.1)
 BuildRequires : util-linux
-BuildRequires : webkitgtk
 Patch1: Gtk3-WebKit-0.06-Port-to-webkitgtk4.patch
 
 %description
@@ -111,4 +110,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Gtk3/WebKit.pm
+/usr/lib/perl5/*
